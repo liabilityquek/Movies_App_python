@@ -10,6 +10,8 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from datetime import timedelta
 from flask_jwt_extended import unset_jwt_cookies
+from flask_mongoengine import MongoEngine
+from config.database import init_database
 import os
 
 app = Flask(__name__, static_folder="dist/assets")
@@ -18,10 +20,12 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=30)
 app.config["JWT_TOKEN_LOCATION"] = ["headers", "query_string"]
+app.config.from_object('config.database')
 
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 init_database(app)
+db = MongoEngine(app)
 
 @app.route("/")
 def home():
