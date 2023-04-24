@@ -14,6 +14,9 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 load_dotenv()
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__, static_folder="dist/assets")
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
