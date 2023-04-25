@@ -2,4 +2,4 @@
 
 ---
 
-## Refer to this <a href="repo"></a> for more details..
+## Refer to this <a href="https://github.com/liabilityquek/Movies_App">repo</a> for more details..
