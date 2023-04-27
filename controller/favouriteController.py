@@ -7,7 +7,6 @@ def create_favourite(request, current_user_id):
     title = request.json.get('title')
     year = request.json.get('year')
     rating = request.json.get('rating')
-    casts = request.json.get('casts', [])
     description = request.json.get('description')
     image_url = request.json.get('image_url')
 
@@ -24,7 +23,7 @@ def create_favourite(request, current_user_id):
             error_message = f"{title} has already been added to your favourites"
             return jsonify({"error": error_message}), 400
         else:
-            new_favourite = Favourite(name=current_user, title=title, year=year, rating=rating, casts=casts, description=description, image_url=image_url)
+            new_favourite = Favourite(name=current_user, title=title, year=year, rating=rating, description=description, image_url=image_url)
             new_favourite.save()
 
         print("updated_favourite:", new_favourite)
