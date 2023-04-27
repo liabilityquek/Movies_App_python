@@ -67,7 +67,7 @@ def login(request, bcrypt):
 
 def refresh():
     current_user = get_jwt_identity()
-    token = create_access_token(identity=current_user, expires_delta=timedelta(minutes=15), fresh=False)
+    token = create_access_token(identity=current_user, expires_delta=timedelta(minutes=60), fresh=False)
     print("Generated token in refresh():", token)
     return jsonify({"token": token}), 200
 
